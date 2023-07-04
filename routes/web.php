@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
-Route::resource('tasks', \App\Http\Controllers\TaskController::class)->middleware('auth');
+Route::resource('tasks', \App\Http\Controllers\TaskController::class)
+    ->middleware('auth');
+
+Auth::routes();
