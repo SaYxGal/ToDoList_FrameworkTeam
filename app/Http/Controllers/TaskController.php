@@ -43,9 +43,11 @@ class TaskController extends Controller
 
     /**
      * Display the specified resource.
+     * @throws AuthorizationException
      */
     public function show(Task $task): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
+        $this->authorize('view', $task);
         return view('task.show', compact('task'));
     }
 

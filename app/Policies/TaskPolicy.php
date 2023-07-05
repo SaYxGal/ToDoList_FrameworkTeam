@@ -7,6 +7,11 @@ use App\Models\User;
 
 class TaskPolicy
 {
+    public function view(User $user, Task $task): bool
+    {
+        return $user->id === $task->user_id;
+    }
+
     /**
      * Determine whether the user can delete the model.
      */
